@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, SafeAreaView, Platform, Image, ScrollView, Touc
 import { Camera } from "expo-camera";
 import * as Permissions from "expo-permissions";
 import * as FaceDetector from "expo-face-detector";
+import Filter1 from "../components/Filter1";
 
 export default class Main extends Component {
     constructor(props) {
@@ -57,6 +58,9 @@ export default class Main extends Component {
                         onFacesDetected={this.onFacesDetected}
                         onFacesDetectionError={this.onFaceDetectionError}
                     />
+                    {this.state.faces.map(face => (
+                        <Filter1 key={`face-id-${face.faceID}`} face={face} />
+                    ))}
                 </View>
             </View>
         );
